@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Createfriends from '../views/Createfriends.vue'
-import Editfriends from '../views/Editfriends.vue'
+import Home from '../views/friends/Home.vue'
+import Createfriends from '../views/friends/Createfriends.vue'
+import Editfriends from '../views/friends/Editfriends.vue'
 
 const routes = [
   {
