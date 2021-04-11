@@ -19,12 +19,12 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/">Home</router-link> 
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link class="nav-link" to="/Createfriends">Create Friends</router-link> 
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/Editfriends">Edit Friends</router-link>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
