@@ -1,7 +1,7 @@
 <template>
 <div class="card shadow mt-3">
   <div class="card-body">
-    <h5 class="card-title">Add Friends</h5>
+    <h5 class="card-title">Edit Friends</h5>
      <form class="row g-3" @submit.prevent="store">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Nama</label>
@@ -14,14 +14,14 @@
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">No Tlp</label>
     <input type="number" class="form-control" id="inputPassword4"
-    v-model="friend.no_tlp"/>
-    <div class="alert alert-danger" v-if="validation.no_tlp">
-        {{ validation.no_tlp[0] }}
+    v-model="friend.no_tlpn"/>
+    <div class="alert alert-danger" v-if="validation.no_tlpn">
+        {{ validation.no_tlpn[0] }}
       </div>
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">Alamat</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Masukkan Alamat"
+    <input type="text" class="form-control" id="inputAddress" 
     v-model="friend.alamat" />
     <div class="alert alert-danger" v-if="validation.alamat">
         {{ validation.alamat[0] }}
@@ -34,49 +34,50 @@
 </form>
   </div>
 </div>
- 
 </template>
 <script>
-import { ref } from 'vue';
-import { reactive } from 'vue';
-import { useRouter } from 'vue-router'
-import axios from 'axios'
+import { reactive,ref } from "vue";
+import { useRouter } from "vue-router"
+import axios from "axios"
 export default {
   setup() {
 
     const friend = reactive({
-      nama: '',
-      no_tlp: '',
-      alamat: ''
-    })
+      nama: "",
+      no_tlpn: "",
+      alamat: ""
+    });
 
-    const validation = ref([])
+    const validation = ref([]);
 
-    const router = useRouter()
+    const router = useRouter();
 
     function store(){
-      let nama = friend.nama
-      let no_tlp = friend.no_tlp
-      let alamat = friend.alamat
+      let nama = friend.nama;
+      let no_tlpn = friend.no_tlpn;
+      let alamat = friend.alamat;
 
-      axios.post('http://pia.labirin.co.id/api/friends', {
+      axios
+      .post('http://127.0.0.1:8000/api/friends/', {
         nama: nama,
-        no_tlp: no_tlp,
+        no_tlpn: no_tlpn,
         alamat: alamat
-      }).then(() => {
-        router.push({
-          name:'Home'
-        })
-      }).catch(error => {
-        console.log(error)
       })
+      .then(() => {
+        router.push({
+          name:"Home"
+        });
+      })
+      .catch(error => {
+        validation.value = error.response.data
+      });
     }
     return {
       friend,
       validation,
       router, 
-      store
-    }
+      store,
+    };
   },
-}
+};
 </script>
