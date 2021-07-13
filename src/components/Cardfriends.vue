@@ -6,6 +6,7 @@
   <div class="card-body">
     <h5 class="card-title">{{friend.no_tlpn}}</h5>
     <p class="card-text">{{friend.alamat}}</p>
+    <p class="card-text">{{friend.groups.name}}</p>
   </div>
   <div class="card-footer text-muted"> <router-link 
   class="btn btn-primary" 
